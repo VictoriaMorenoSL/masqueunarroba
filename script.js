@@ -650,11 +650,11 @@
   }
 
   function processRecognizedSpeech(scene, transcript, isFinal) {
-    const clean=transcript.trim(),normalized=normalizeSpeech(clean),words=clean.split(/\s+/).filter(Boolean);
-    const emailLike=(normalized.includes('@')&&normalized.includes('.'))||(/\barroba\b/i.test(clean)&&/\bpunto\b/i.test(clean));
-    const clearPhrase=isFinal&&normalized.replace(/[^a-z0-9]/g,'').length>=8&&words.length>=2;
+    const clean=transcript.trim(),normalized=normalizeSpeech(clean);
+    const emailLike=/^[a-z0-9._%+-]+@[a-z0-9-]+(?:\.[a-z0-9-]+)+$/i.test(normalized);
     scene.ui.querySelector('.speech-debug').textContent=clean;
-    if(emailLike||clearPhrase)triggerDoorOpen(scene,clean);
+    // Only a completed transcript with an email structure may open the door.
+    if(isFinal&&emailLike)triggerDoorOpen(scene,clean);
   }
 
   function startSpeechRecognition(scene) {
@@ -667,7 +667,7 @@
     recognition.onresult=event=>{
       let transcript='';let final=false;
       for(let i=event.resultIndex;i<event.results.length;i++){transcript+=event.results[i][0].transcript;final=final||event.results[i].isFinal;}
-      // Text processing: look for an email structure or a sufficiently clear phrase.
+      // Text processing: require a completed email-shaped phrase before opening.
       processRecognizedSpeech(scene,transcript,final);
     };
     recognition.onend=()=>{if(!scene.destroyed&&!scene.languageDetected)try{recognition.start();}catch(_){}};
@@ -693,8 +693,7 @@
         scene.voiceLevel+=(target-scene.voiceLevel)*.16;mic.style.setProperty('--voice',scene.voiceLevel.toFixed(3));
         mic.classList.toggle('is-hearing',scene.voiceLevel>.09);
         scene.sustainedVoice=scene.voiceLevel>.12?scene.sustainedVoice+16.7:Math.max(0,scene.sustainedVoice-28);
-        // Sustained, clear vocal input is the physical trigger; recognition supplies a transcript when available.
-        if(scene.sustainedVoice>1000)triggerDoorOpen(scene,scene.ui.querySelector('.speech-debug').textContent||'Voz continua detectada');
+        // Audio level drives only the glow. SpeechRecognition exclusively controls the door.
         scene.voiceRaf=requestAnimationFrame(sample);
       };sample();
     } catch (_) { mic.classList.add('is-unavailable'); }
