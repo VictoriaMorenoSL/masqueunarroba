@@ -2,6 +2,10 @@
 
 Experiencia web interactiva sobre la identidad digital y el correo electrónico.
 
+## Sitio web
+
+[Ver la experiencia completa](https://victoriamorenosl.github.io/masqueunarroba/)
+
 La experiencia comienza en `index.html`, continúa en la visualización interactiva y termina en la sección de reflexión.
 
 ## Archivos principales
@@ -12,4 +16,3 @@ La experiencia comienza en `index.html`, continúa en la visualización interact
 - `styles.css`: sistema visual y adaptación responsiva.
 - `script.js`: malla, animaciones e interacciones.
 - `assets/`: imágenes, vectores, tipografías y audio.
-
