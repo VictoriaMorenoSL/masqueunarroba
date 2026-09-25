@@ -501,6 +501,8 @@ body { margin: 0; }
 .counter-signal { top:20.5%; left:3.4%; right:3.4%; height:14.5%; background-color:var(--color-primary-text); background-image:repeating-linear-gradient(to right,var(--color-accent) 0 6px,transparent 6px 13px); background-position:center; background-size:100% 1px; background-repeat:no-repeat; }
 .counter-number { position:absolute; left:3.3%; top:39%; width:90%; height:19%; display:flex; align-items:center; overflow:hidden; background:var(--color-primary-text); font:400 clamp(23px,2.75vw,34px)/1 var(--font-body); letter-spacing:0; }
 .counter-caption { position:absolute; left:3.3%; top:61%; width:78%; height:16%; display:flex; align-items:center; margin:0; overflow:hidden; background:var(--color-primary-text); font:700 italic clamp(15px,1.7vw,21px)/1 var(--font-body); }
+.email-counter[data-period="year"] .counter-number { width:93%; font-size:clamp(19px,2.1vw,27px); letter-spacing:-.035em; }
+.email-counter[data-period="year"] .counter-caption { width:88%; font-size:clamp(14px,1.5vw,18px); }
 .counter-source { display:none; }
 .counter-icon { right:1.8%; bottom:4.5%; width:17%; height:31%; background:var(--color-primary-text); mask:none; -webkit-mask:none; }
 .counter-icon::after { content:""; position:absolute; inset:8%; background:var(--color-focus); mask:center/contain no-repeat; -webkit-mask:center/contain no-repeat; }
@@ -518,4 +520,4 @@ body { margin: 0; }
  .counter-caption { font-size:clamp(13px,4vw,19px); }
 }
 
-.email-counter::before { content:""; position:absolute; z-index:2; left:0; top:8%; width:16%; height:11%; background:var(--color-primary-text); pointer-events:none; }
+.email-counter::before { content:""; position:absolute; z-index:2; left:0; top:5%; width:18%; height:16%; background:var(--color-primary-text); pointer-events:none; }
