@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Bienvenide</title>
+  <link rel="stylesheet" href="styles.css?v=49">
+  <script src="script.js?v=49" defer></script>
+</head>
+<body>
+  <main id="mesh-demo" class="mesh-demo">
+    <div class="mesh-layer" aria-hidden="true"></div>
+    <div class="code-decoration entrance" aria-hidden="true">
+      <span data-random-code>8RG0@#&?/\</span>
+      <span data-random-code>8RG0@#&?/\</span>
+    </div>
+    <section class="welcome" aria-label="Bienvenida">
+      <h1 class="welcome-title entrance">
+        <img src="assets/Recurso%204bienvenida.svg" alt="Bienvenide" width="386" height="88" decoding="async">
+      </h1>
+      <p class="threshold-subtitle"><img src="assets/Recurso%2025umbral.svg" alt="Estás por cruzar el umbral por el que entras al mundo digital, una y otra vez, tal vez sin darte cuenta"></p>
+      <section class="instructions entrance" aria-labelledby="instructions-title">
+        <!-- Supplied SVG headings retain accessible text alternatives. -->
+        <h2 id="instructions-title" class="display-copy" data-svg-slot="instructions"><img src="assets/Recurso%2023para-cruzar.svg" alt="Para cruzar" class="label-svg"></h2>
+        <p>Verás una interfaz con <strong><em>profundidad</em></strong>, con el <strong><em>scroll</em></strong> de tu mouse llegarás al fondo y en ciertos momentos deberás <strong><em>hablar en voz alta</em></strong> para continuar el recorrido.</p>
+        <h2 class="display-copy" data-svg-slot="requirements"><img src="assets/Recurso%2024que-necesitas.svg" alt="¿Qué necesitas?" class="label-svg"></h2>
+        <p>Da <strong>permiso</strong> para acceder a tu <strong>micrófono.</strong><br>Necesitarás tu <strong>mouse</strong> y el botón de <strong>scroll.</strong></p>
+      </section>
+      <section class="access entrance" aria-labelledby="access-title">
+        <h2 id="access-title" class="display-copy" data-svg-slot="access"><img src="assets/Recurso%208para-acceder.svg" alt="Para acceder ingresa tu correo electrónico" class="label-svg"></h2>
+        <!-- Email and microphone permission unlock the local transition. -->
+        <form class="access-form" novalidate>
+          <label class="sr-only" for="welcome-email">Correo electrónico</label>
+          <input id="welcome-email" name="email" type="email" required aria-describedby="access-feedback" autocomplete="email" placeholder="Escribe aquí tu correo">
+          <p id="access-feedback" class="access-feedback" role="status" aria-live="polite" aria-atomic="true"></p>
+          <button type="submit" class="continue-button">continuar</button>
+        </form>
+      </section>
+    </section>
+  </main>
+</body>
+</html>
